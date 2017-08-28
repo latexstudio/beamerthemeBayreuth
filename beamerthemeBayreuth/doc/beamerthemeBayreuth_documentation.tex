@@ -1,0 +1,163 @@
+%%	This is file 'beamerthemeBayreuth_documentation.tex', Version 2017-08-28
+%%	Copyright 2017 Sebastian Friedl <sfr682k@t-online.de>
+%% 
+%%	This work may be distributed and/or modified under the conditions of the LaTeX Project
+%%	Public License, either version 1.3c of this license or (at your option) any later version.
+%%	The latest version of this license is available at
+%%		http://www.latex-project.org/lppl.txt
+%%	and version 1.3c or later is part of all distributions of LaTeX version 2008-05-04 or later.
+%%
+%%	This work has the LPPL maintenace status 'maintained'.
+%%	The current maintainer of this work is Sebastian Friedl.
+%%
+%%	This work consists of the files beamerthemeBayreuth.sty and beamerthemeBayreuth_documentation.tex
+%%
+%%	---------------------------------------------------------------------------------------------------------------------------------------------
+%%
+%%	The Bayreuth beamer theme is a simple, highly configurable LaTeX beamer theme using colors from the city of Bayreuth's logo.
+%%
+%%	---------------------------------------------------------------------------------------------------------------------------------------------
+%%
+%%	Please report bugs and other problems as well as suggestions for improvements to my email address (sfr682k@t-online.de).
+%%
+%%	---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+% !TeX spellcheck = en_US
+
+% !TeX document-id = {b3b4668f-f5d8-4010-ac4e-2eb3098d15f4}
+% !TeX program=lualatex
+% !TeX TXS-program:compile=txs:///lualatex/[--shell-escape]
+
+\documentclass[11pt]{ltxdoc}
+
+\usepackage{fontspec}
+\setmainfont{Vollkorn}
+\setsansfont[Scale=MatchLowercase]{Corbel}
+\setmonofont[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
+
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage{hologo}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{pgf}
+\usepackage{tikz}
+
+
+\parindent 0pt
+
+
+\usepackage[left=4.50cm,right=2.75cm,top=3.25cm,bottom=2.75cm,nohead]{geometry}
+
+\hyphenation{}
+
+\title{The Bayreuth \LaTeX\ beamer theme}
+\author{Sebastian Friedl \\ \href{mailto:sfr682k@t-online.de}{\texttt{sfr682k@t-online.de}}}
+\date{August 28, 2017}
+
+\hypersetup{pdftitle={The Bayreuth \LaTeX\ beamer theme},pdfauthor={Sebastian Friedl}}
+
+\begin{document}
+	\maketitle
+	\thispagestyle{empty}
+	%
+	
+	\medskip
+	\begin{abstract}
+		\hspace{-1.5em}%
+		The Bayreuth beamer theme is a simple, highly configurable \LaTeX\ beamer theme using colors from the city of Bayreuth's logo.
+	\end{abstract}
+	
+
+	\tableofcontents
+
+	\clearpage
+
+	
+	
+	\subsection*{Dependencies and other requirements}
+	\addcontentsline{toc}{subsection}{Dependencies and other requirements}
+	The Bayreuth theme requires \LaTeXe\ and -- in addition to the ones requested by the \texttt{beamer} class -- following packages:
+	
+
+	\bigskip
+	Some dependencies can be omitted by applying some theme options \textit{(See section \ref{themeoptions} for further details)}.
+	
+	
+	\subsection*{Call for cooperation}
+	\addcontentsline{toc}{subsection}{Call for cooperation}
+	Please report bugs and other problems as well as suggestions for improvements to my email address (\href{mailto:sfr682k@t-online.de}{\texttt{sfr682k@t-online.de}}).
+	
+	
+	\subsection*{Style sample}
+	\addcontentsline{toc}{subsection}{Style sample}
+	\begin{figure} \centering
+		\pgfimage[width=0.465\textwidth,page=1]{sample-beamer-presentation_Bayreuth}~~~\pgfimage[width=0.465\textwidth,page=2]{sample-beamer-presentation_Bayreuth} \\[.5em]
+		\pgfimage[width=0.465\textwidth,page=3]{sample-beamer-presentation_Bayreuth}~~~\pgfimage[width=0.465\textwidth,page=4]{sample-beamer-presentation_Bayreuth} \\[.5em]
+		\pgfimage[width=0.465\textwidth,page=5]{sample-beamer-presentation_Bayreuth}~~~\pgfimage[width=0.465\textwidth,page=6]{sample-beamer-presentation_Bayreuth} \\[.5em]
+		\pgfimage[width=0.465\textwidth,page=7]{sample-beamer-presentation_Bayreuth}%~~~\pgfimage[width=0.465\textwidth,page=8]{sample-beamer-presentation_Bayreuth}
+		
+		\caption{Style sample of the Bayreuth theme}
+		\label{stylesample}
+	\end{figure}
+	
+	The style sample shown in figure \ref{stylesample} was made using the sample presentation \enquote{Writing presentations in \LaTeX\ beamer?} created by Sebastian Friedl\footnote{Source available on \href{https://github.com/SFr682k/sample-latex-beamer-presentation}{GitHub} (\textit{Licensed under the WTFPL})}.
+	
+	
+	\subsection*{License}
+	\begin{small}
+		\addcontentsline{toc}{subsection}{License}
+		\copyright\ 2017 Sebastian Friedl
+		
+		\smallskip
+		This work may be distributed and/or modified under the conditions of the \LaTeX\ Project Public License, either version 1.3c of this license or (at your option) any later version.
+		
+		\smallskip
+		The latest version of this license is available at \url{http://www.latex-project.org/lppl.txt} and version 1.3c or later is part of all distributions of \LaTeX\ version 2008-05-04 or later.
+	
+		\smallskip
+		This work has the LPPL maintenace status 'maintained'. The current maintainer of this work is Sebastian Friedl. \\
+		This work consists of the following files:
+		\begin{itemize} \itemsep 0pt
+			\item \texttt{beamerthemeBayreuth.sty} and
+			\item \texttt{beamerthemeBayreuth\_documentation.tex}
+		\end{itemize}
+	\end{small}
+	
+	
+	
+	% BEGIN OF DOCUMENTATION PART
+	
+	\section{Using the theme}
+	For using the theme you have to copy the file \texttt{beamerthemeBayreuth.sty} into the folder containing the master file of your presentation. Advanced users may also install the style file on their local system. \par
+	After that, simply use the command \mintinline{LaTeX}{\usetheme{Bayreuth}} to set the theme used in your presentation to the Bayreuth theme.
+
+	
+	\section{Theme options}				\label{themeoptions}
+	Passing some options to the theme influences the way it behaves. \\
+	Syntax: \ \ \mintinline{LaTeX}{\usetheme[<option1>, <option2>, ...]{Bayreuth}}
+	
+	\subsubsection*{Available options:}
+
+	
+	
+	\section{Features}
+	There are many features allowing configuration and personalization of the Bayreuth theme as well as easier writing the presentation's source. Please note that some of the configurations are discarded at the beginning of the appendix.
+	
+	
+	
+	
+	\section{Notes}
+%	\subsection{Known problems and workarounds}
+
+	
+	
+	\vfill
+%	\clearpage
+	\thispagestyle{empty}
+	\listoffigures
+	\listoftables
+\end{document}
