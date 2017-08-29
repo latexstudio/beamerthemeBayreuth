@@ -88,10 +88,11 @@
 	
 	\subsection*{Dependencies and other requirements}
 	\addcontentsline{toc}{subsection}{Dependencies and other requirements}
-	The Bayreuth theme requires \LaTeXe\ and the packages requested by the \texttt{beamer} class. \\
-	Currently, there are no dependencies on other packages.
-	%-- in addition to the ones requested by the \texttt{beamer} class -- following packages:
+	The Bayreuth theme requires \LaTeXe\ and -- in addition to the ones requested by the \texttt{beamer} class -- following packages:
 	
+	\medskip
+	\DescribeMacro{tikz}
+	The frontend to pgf used for drawings
 
 %	\bigskip
 %	Some dependencies can be omitted by applying some theme options \textit{(See section \ref{themeoptions} for further details)}.
@@ -151,8 +152,8 @@
 	Syntax: \ \ \mintinline{LaTeX}{\usetheme[<option1>, <option2>, ...]{Bayreuth}}
 	
 	\subsubsection*{Available options:}
-	\textit{Actually, there are no options available.} But there will be some.
-	
+	\DescribeMacro{nosmallcaps}
+	Activate this option if your font doesn't support small caps
 	
 %	\section{Features}
 %	There are many features allowing configuration and personalization of the Bayreuth theme as well as easier writing the presentation's source. Please note that some of the configurations are discarded at the beginning of the appendix.
@@ -164,19 +165,22 @@
 	\begin{itemize}
 		\item[\cmark]  Basic color definitions
 		\item[\cmark]  Frame title templates defined
-		\item[\darrow] Template for title frame
+		\item[\cmark]  Template for title frame
+		\item[\cmark]  Templates for structure frames
+		\item[\cmark]  Full font theme
 		\item[\darrow] Innerstyling
 		\item[\darrow] Head-- and footline templates
-		\item[\darrow] Templates for structure frames
 		\item[\darrow] Add support for large frame numbers (with a fancy progress bar)
 		\item[\darrow] Full color theme
-		\item[\darrow] Full font theme
 	\end{itemize}
 	
 	
-%	\section{Notes}
-%	\subsection{Known problems and workarounds}
-
+	\section{Notes}
+	\subsection{Known problems and workarounds}
+	\begin{itemize}
+		\item%
+		Title and structure frames may require to be compiled twice
+	\end{itemize}
 	
 	
 	\vfill

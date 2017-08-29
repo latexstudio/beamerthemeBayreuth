@@ -44,9 +44,17 @@
 
 % REQUIRED PACKAGES -----------------------------------------------------------------------------------------------------------------------------
 
+\RequirePackage{tikz}
+
 
 
 % OPTION DECLARATIONS ---------------------------------------------------------------------------------------------------------------------------
+
+\newif\ifbeamer@smallcaps
+\beamer@smallcapstrue
+\DeclareOptionBeamer{nosmallcaps}{\beamer@smallcapsfalse}
+
+\ProcessOptionsBeamer
 
 
 
@@ -59,6 +67,133 @@
 
 
 % INNERSTYLING II (Title & stucture frames) -----------------------------------------------------------------------------------------------------
+
+% Title frame layout
+\setbeamertemplate{title page}{%
+	\ifx\insertframetitle\@empty\frametitle{~}\fi
+	%
+	\begin{tikzpicture}[remember picture, overlay]
+		% Separation line
+		\draw[BayreuthBlue1, very thick] (current page.west) ++(2.2em,0) -- (current page.east);
+		
+		\ifx\inserttitlegraphic\@empty
+			% Presentation title
+			\draw (current page.west) ++(2em,  0.6em) node[anchor=base west, align=left]%
+				{\usebeamerfont*{title}\usebeamercolor*{title}\ifx\inserttitle\@empty\else\inserttitle\fi};
+			%
+			% Author & institute
+			\draw (current page.west) ++(2em, -0.3em) node[anchor=north west, align=left]%
+				{{\usebeamerfont*{author}\usebeamercolor*{author}\ifx\beamer@shortauthor\@empty\else\insertauthor\fi} \\%
+				 {\usebeamerfont*{institute}\usebeamercolor*{institute}\ifx\insertinstitute\@empty\else\insertinstitute\fi}};
+		\else
+			% Titlegraphic
+			\draw (current page.west) ++(2em,  0.15em) node[anchor=south west, align=left]%
+				{\usebeamercolor*{titlegraphic}\inserttitlegraphic};
+			%
+			% Presentation title, author & institute
+			\draw (current page.west) ++(2em, -0.3em) node[anchor=north west, align=left]%
+				{{\usebeamerfont*{title}\usebeamercolor*{title}\ifx\inserttitle\@empty\else\inserttitle\fi} \\%
+				 {\usebeamerfont*{author}\usebeamercolor*{author}\ifx\beamer@shortauthor\@empty\else\insertauthor\fi} \\%
+				 {\usebeamerfont*{institute}\usebeamercolor*{institute}\ifx\insertinstitute\@empty\else\insertinstitute\fi}};
+		\fi
+	\end{tikzpicture}}
+
+% Part frame layout
+\setbeamertemplate{part page}{%
+	\ifx\insertframetitle\@empty\frametitle{~}\fi
+	%
+	\begin{tikzpicture}[remember picture, overlay]
+		% Separation line
+		\draw[BayreuthBlue1, very thick] (current page.west) ++(2.2em,0) -- (current page.east);
+		
+		\ifx\inserttitlegraphic\@empty
+			% Part title
+			\draw (current page.west) ++(2em,  0.6em) node[anchor=base west, align=left]%
+				{\usebeamerfont*{part title}\usebeamercolor*{title}\insertromanpartnumber.~ \insertpart};
+		\else
+			% Titlegraphic
+			\draw (current page.west) ++(2em,  0.15em) node[anchor=south west, align=left]%
+				{\usebeamercolor*{titlegraphic}\inserttitlegraphic};
+			%
+			% Part title
+			\draw (current page.west) ++(2em, -0.3em) node[anchor=north west, align=left]%
+				{\usebeamerfont*{part title}\usebeamercolor*{title}\insertromanpartnumber.~ \insertpart};
+		\fi
+	\end{tikzpicture}}
+
+% Section frame layout
+\setbeamertemplate{section page}{%
+	\ifx\insertframetitle\@empty\frametitle{~}\fi
+	%
+	\begin{tikzpicture}[remember picture, overlay]
+		% Separation line
+		\draw[BayreuthBlue1, very thick] (current page.west) ++(2.2em,0) -- (current page.east);
+		
+		\ifx\inserttitlegraphic\@empty
+			% Section title
+			\draw (current page.west) ++(2em,  0.6em) node[anchor=base west, align=left]%
+				{\usebeamerfont*{section title}\usebeamercolor*{title}\textup{\insertsectionnumber}.~ \insertsection};
+		\else
+			% Titlegraphic
+			\draw (current page.west) ++(2em,  0.15em) node[anchor=south west, align=left]%
+				{\usebeamercolor*{titlegraphic}\inserttitlegraphic};
+			%
+			% Section title
+			\draw (current page.west) ++(2em, -0.3em) node[anchor=north west, align=left]%
+				{\usebeamerfont*{section title}\usebeamercolor*{title}\textup{\insertsectionnumber}.~ \insertsection};
+		\fi
+	\end{tikzpicture}}
+
+% Subsection frame layout
+\setbeamertemplate{subsection page}{%
+	\ifx\insertframetitle\@empty\frametitle{~}\fi
+	%
+	\begin{tikzpicture}[remember picture, overlay]
+		% Separation line
+		\draw[BayreuthBlue1, very thick] (current page.west) ++(2.2em,0) -- (current page.east);
+		
+		\ifx\inserttitlegraphic\@empty
+			% Section title
+			\draw (current page.west) ++(2em,  0.6em) node[anchor=base west, align=left]%
+				{\usebeamerfont*{section title}\usebeamercolor*{title}\textup{\insertsectionnumber}.~\insertsection};
+			%
+			% Subsection title
+			\draw (current page.west) ++(2em, -0.3em) node[anchor=north west, align=left]%
+				{\usebeamerfont*{subsection title}\usebeamercolor*{title}\textup{\insertsectionnumber.\insertsubsectionnumber}~\insertsubsection};
+		\else
+			% Titlegraphic
+			\draw (current page.west) ++(2em,  0.15em) node[anchor=south west, align=left]%
+				{\usebeamercolor*{titlegraphic}\inserttitlegraphic};
+			%
+			% Section & subsection title
+			\draw (current page.west) ++(2em, -0.3em) node[anchor=north west, align=left]%
+				{{\usebeamerfont*{section title}\usebeamercolor*{title}\textup{\insertsectionnumber}.~ \insertsection} \\%
+				 {\usebeamerfont*{subsection title}\usebeamercolor*{title}\textup{\insertsectionnumber.\insertsubsectionnumber}~ \insertsubsection}};
+		\fi
+	\end{tikzpicture}}
+
+% Appendix part frame layout
+\defbeamertemplate{part page}{appendix}{%
+	\ifx\insertframetitle\@empty\frametitle{~}\fi
+	%
+	\begin{tikzpicture}[remember picture, overlay]
+		% Separation line
+		\draw[BayreuthBlue1, very thick] (current page.west) ++(2.2em,0) -- (current page.east);
+		
+		\ifx\inserttitlegraphic\@empty
+			% "Appendix" label
+			\draw (current page.west) ++(2em,  0.6em) node[anchor=base west, align=left]%
+				{\usebeamerfont*{part title}\usebeamercolor*{title}\insertpart};
+		\else
+		% Titlegraphic
+			\draw (current page.west) ++(2em,  0.15em) node[anchor=south west, align=left]%
+				{\usebeamercolor*{titlegraphic}\inserttitlegraphic};
+			%
+			% "Appendix" label
+			\draw (current page.west) ++(2em, -0.3em) node[anchor=north west, align=left]%
+				{\usebeamerfont*{part title}\usebeamercolor*{title}\insertpart};
+		\fi	
+	\end{tikzpicture}}
 
 
 
@@ -79,8 +214,95 @@
 
 % FONT THEME PART -------------------------------------------------------------------------------------------------------------------------------
 
+% Title frame
+\setbeamerfont*{title}{size=\Large, series=\bfseries}
+\setbeamerfont*{author}{size=\small}
+\setbeamerfont*{institute}{size=\small}
+
+% Frame title & subtitle
 \setbeamerfont*{frametitle}{size=\Large, series=\bfseries, parent=structure}
 \setbeamerfont*{framesubtitle}{size=\footnotesize}
+
+% Footline (Navigation/Meta information & frame numbers
+\setbeamerfont*{navigation bar}{shape=\itshape, size=\tiny}
+\setbeamerfont*{meta information}{size=\tiny}
+\setbeamerfont*{frame number}{size=\tiny}
+
+% Font styles for part pages
+\setbeamerfont*{part name}{size=\LARGE, series=\bfseries}
+\setbeamerfont*{part title}{size=\LARGE, series=\bfseries}
+
+% Font styles for section pages
+\setbeamerfont*{section name}{size=\Large}
+\setbeamerfont*{section title}{size=\Large}
+
+% Font styles for subsecion pages
+\setbeamerfont*{subsection name}{size=\large, shape=\itshape}
+\setbeamerfont*{subsection title}{size=\large, shape=\itshape}
+
+% Font styles for table of contents
+\setbeamerfont*{section number projected}{size=\small,parent={section in toc,projected text}}
+\setbeamerfont*{section in toc}{parent=structure, size=\large}
+\setbeamerfont*{section in toc shaded}{parent=section in toc}
+\setbeamerfont*{subsection in toc}{size=\small}
+\setbeamerfont*{subsection in toc shaded}{parent=subsection in toc}
+\setbeamerfont*{subsubsection in toc}{size=\footnotesize}
+\setbeamerfont*{subsubsection in toc shaded}{parent=subsubsection in toc}
+
+% Caption styles
+\setbeamerfont*{caption}{size=\small, shape=\itshape}
+\setbeamerfont*{caption name}{size=\small, shape=\upshape}
+
+% Button styles
+\setbeamerfont*{button}{size=\tiny}
+
+% Block styles
+\setbeamerfont*{block title}{size=\large,parent={structure,block body}}
+\setbeamerfont*{block body}{}
+
+% Example block styles
+\setbeamerfont*{block body example}{}
+\setbeamerfont*{block title example}{parent={block title,example text}}
+
+% Alert block styles
+\setbeamerfont*{block title alerted}{parent={block title,alerted text}}
+\setbeamerfont*{block body alerted}{}
+
+% Item styles
+\setbeamerfont*{item}{parent=structure}
+\setbeamerfont*{itemize item}{parent=item}
+\setbeamerfont*{enumerate item}{shape=\itshape, parent=item}
+\setbeamerfont*{itemize/enumerate body}{}
+
+% Subitem styles
+\setbeamerfont*{subitem}{parent=item}
+\setbeamerfont*{itemize subitem}{parent=subitem}
+\setbeamerfont*{enumerate subitem}{shape=\itshape, parent=subitem}
+\setbeamerfont*{itemize/enumerate subbody}{size=\small}
+
+% Subsubitem styles
+\setbeamerfont*{subsubitem}{parent=subitem}
+\setbeamerfont*{itemize subsubitem}{parent=subsubitem}
+\setbeamerfont*{enumerate subsubitem}{shape=\itshape, parent=subsubitem}
+\setbeamerfont*{itemize/enumerate subsubbody}{size=\footnotesize}
+
+% Description item styles
+\setbeamerfont*{description item}{series=\bfseries, parent=item}
+
+% Uses -- unless deactivated -- small capitals for some font styles
+\ifbeamer@smallcaps
+	\setbeamerfont{title}{shape=\scshape}
+	\setbeamerfont{meta information}{shape=\scshape}
+	\setbeamerfont{frame number}{shape=\scshape}
+	\setbeamerfont{caption}{shape=\scshape}
+	\setbeamerfont{block title}{shape=\scshape}
+	\setbeamerfont{block title alerted}{shape=\scshape}
+	\setbeamerfont{block title example}{shape=\scshape}
+	\setbeamerfont{part name}{shape=\scshape}
+	\setbeamerfont{part title}{shape=\scshape}
+	\setbeamerfont{section name}{shape=\scshape}
+	\setbeamerfont{section title}{shape=\scshape}
+\fi
 
 
 
@@ -100,9 +322,6 @@
 \setbeamercolor*{palette secondary}{fg=black,bg=BayreuthGreen}
 \setbeamercolor*{palette tertiary}{fg=black,bg=BayreuthBlue2}
 \setbeamercolor*{palette quaternary}{fg=black,bg=BayreuthGrey}
-
-% Temporary solution: Color of presentation title on title frame
-\setbeamercolor*{titlelike}{parent=palette primary}
 
 % Colors for the titlebar
 \setbeamercolor*{frametitle}{parent=palette primary}
