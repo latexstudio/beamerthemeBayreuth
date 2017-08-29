@@ -1,4 +1,4 @@
-%%	This is file 'beamerthemeBayreuth.sty', Version 2017-08-28
+%%	This is file 'beamerthemeBayreuth.sty', Version 2017-08-29
 %%	Copyright 2017 Sebastian Friedl <sfr682k@t-online.de>
 %% 
 %%	This work may be distributed and/or modified under the conditions of the LaTeX Project
@@ -21,3 +21,116 @@
 %%	Please report bugs and other problems as well as suggestions for improvements to my email address (sfr682k@t-online.de).
 %%
 %%	--------------------------------------------------------------------------------------------------------------------------------------------- 
+
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeBayreuth}[2017/08/29 Bayreuth beamer theme -- under construction]
+
+% Switches to presentation mode
+\mode<presentation>
+
+\typeout{}
+\typeout{========================================}
+\typeout{Bayreuth LaTeX beamer theme}
+\typeout{Version 2017/08/29}
+\typeout{}
+\typeout{(c) 2017 Sebastian Friedl}
+\typeout{Licensed under LPPL 1.3c or later}
+\typeout{========================================}
+\typeout{}
+
+
+
+% REQUIRED PACKAGES -----------------------------------------------------------------------------------------------------------------------------
+
+
+
+% OPTION DECLARATIONS ---------------------------------------------------------------------------------------------------------------------------
+
+
+
+% APPENDIX SETTINGS -----------------------------------------------------------------------------------------------------------------------------
+
+
+
+% INNERSTYLING I (Itemizations, enumerations, table of contents) --------------------------------------------------------------------------------
+
+
+
+% INNERSTYLING II (Title & stucture frames) -----------------------------------------------------------------------------------------------------
+
+
+
+% OUTERSTYLING (Frame layout) -------------------------------------------------------------------------------------------------------------------
+
+\defbeamertemplate*{frametitle}{Bayreuth}{%
+	\nointerlineskip%
+	\begin{beamercolorbox}[wd=\paperwidth,sep=0pt,ht=2.5ex,dp=0.75ex,leftskip=1.5ex]{frametitle}%
+		\usebeamerfont*{frametitle}\insertframetitle%
+	\end{beamercolorbox}%
+	\nointerlineskip%
+	\begin{beamercolorbox}[wd=\paperwidth,sep=0pt,ht=1.40ex,dp=0.4ex,leftskip=1.5ex]{framesubtitle}%
+		\usebeamerfont*{framesubtitle}\insertframesubtitle%
+	\end{beamercolorbox}%
+}
+
+
+
+% FONT THEME PART -------------------------------------------------------------------------------------------------------------------------------
+
+\setbeamerfont*{frametitle}{size=\Large, series=\bfseries, parent=structure}
+\setbeamerfont*{framesubtitle}{size=\footnotesize}
+
+
+
+% COLOR THEME PART ------------------------------------------------------------------------------------------------------------------------------
+
+\definecolor{BayreuthBlue1}{HTML}{0061A1}
+\definecolor{BayreuthBlue2}{HTML}{008BCB}
+\definecolor{BayreuthGreen}{HTML}{80BA26}
+\definecolor{BayreuthGrey}{HTML}{808080}
+
+% Structure colors
+\setbeamercolor{structure}{fg=BayreuthBlue1}
+\setbeamercolor{local structure}{parent=structure}
+
+% Palette colors
+\setbeamercolor*{palette primary}{fg=white,bg=BayreuthBlue1}
+\setbeamercolor*{palette secondary}{fg=black,bg=BayreuthGreen}
+\setbeamercolor*{palette tertiary}{fg=black,bg=BayreuthBlue2}
+\setbeamercolor*{palette quaternary}{fg=black,bg=BayreuthGrey}
+
+% Temporary solution: Color of presentation title on title frame
+\setbeamercolor*{titlelike}{parent=palette primary}
+
+% Colors for the titlebar
+\setbeamercolor*{frametitle}{parent=palette primary}
+\setbeamercolor*{framesubtitle}{parent=palette secondary}
+
+% Colors for normal blocks
+\setbeamercolor*{block title}{parent=palette primary}
+\setbeamercolor*{block body}{parent=normal text,use=block title,bg=block title.bg!20!bg}
+
+% Colors for alert blocks
+\setbeamercolor*{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!85!black!80!white}
+\setbeamercolor*{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!20!bg}
+
+% Colors for example blocks
+\setbeamercolor*{block title example}{parent=palette secondary}
+\setbeamercolor*{block body example}{parent=normal text,use=block title example,bg=block title example.bg!20!bg}
+
+
+
+% IDIOT-SAFE COMMANDS FOR INSERTING STRUCTURE FRAMES --------------------------------------------------------------------------------------------
+
+
+
+% COMMANDS FOR CHANGING THE THEME'S SETTINGS AND BEHAVIOUR --------------------------------------------------------------------------------------
+
+
+
+% END OF FILE -----------------------------------------------------------------------------------------------------------------------------------
+
+\mode<all>
+\endinput
