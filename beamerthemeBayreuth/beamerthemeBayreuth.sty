@@ -1,4 +1,4 @@
-%%	This is file 'beamerthemeBayreuth.sty', Version 2017-08-29
+%%	This is file 'beamerthemeBayreuth.sty', Version 2017-09-08
 %%	Copyright 2017 Sebastian Friedl <sfr682k@t-online.de>
 %% 
 %%	This work may be distributed and/or modified under the conditions of the LaTeX Project
@@ -25,7 +25,7 @@
 
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeBayreuth}[2017/08/29 Bayreuth beamer theme -- under construction]
+\ProvidesPackage{beamerthemeBayreuth}[2017/09/08 Bayreuth beamer theme -- under construction]
 
 % Switches to presentation mode
 \mode<presentation>
@@ -33,7 +33,7 @@
 \typeout{}
 \typeout{========================================}
 \typeout{Bayreuth LaTeX beamer theme}
-\typeout{Version 2017/08/29}
+\typeout{Version 2017/09/08}
 \typeout{}
 \typeout{(c) 2017 Sebastian Friedl}
 \typeout{Licensed under LPPL 1.3c or later}
@@ -69,7 +69,7 @@
 % INNERSTYLING II (Title & stucture frames) -----------------------------------------------------------------------------------------------------
 
 % Title frame layout
-\setbeamertemplate{title page}{%
+\defbeamertemplate*{title page}{Bayreuth}{%
 	\ifx\insertframetitle\@empty\frametitle{~}\fi
 	%
 	\begin{tikzpicture}[remember picture, overlay]
@@ -99,7 +99,7 @@
 	\end{tikzpicture}}
 
 % Part frame layout
-\setbeamertemplate{part page}{%
+\defbeamertemplate*{part page}{Bayreuth}{%
 	\ifx\insertframetitle\@empty\frametitle{~}\fi
 	%
 	\begin{tikzpicture}[remember picture, overlay]
@@ -122,7 +122,7 @@
 	\end{tikzpicture}}
 
 % Section frame layout
-\setbeamertemplate{section page}{%
+\defbeamertemplate*{section page}{Bayreuth}{%
 	\ifx\insertframetitle\@empty\frametitle{~}\fi
 	%
 	\begin{tikzpicture}[remember picture, overlay]
@@ -145,7 +145,7 @@
 	\end{tikzpicture}}
 
 % Subsection frame layout
-\setbeamertemplate{subsection page}{%
+\defbeamertemplate{subsection page}{Bayreuth}{%
 	\ifx\insertframetitle\@empty\frametitle{~}\fi
 	%
 	\begin{tikzpicture}[remember picture, overlay]
